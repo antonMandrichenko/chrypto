@@ -21,5 +21,7 @@ const StyledButton = withStyles({
 })(Button);
 
 export default function AppButton(props) {
-  return <StyledButton>{props.children.toUpperCase()}</StyledButton>;
+  return (
+    <StyledButton type="submit">{props.children.toUpperCase()}</StyledButton>
+  );
 }

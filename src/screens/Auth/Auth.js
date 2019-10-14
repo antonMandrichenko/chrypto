@@ -5,11 +5,15 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import AppButton from "../../components/Button";
 import AppInput from "../../components/Input";
-import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
+import { mapStateToProps, mapDispatchToProps } from "./redux";
+import { Mutation } from "react-apollo";
 
 const propTypes = {};
 
@@ -25,7 +29,9 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      <Box pt={3} pb={3}>{children}</Box>
+      <Box pt={3} pb={3}>
+        {children}
+      </Box>
     </Typography>
   );
 }
@@ -53,15 +59,15 @@ const useStyles = makeStyles(theme => ({
     width: "40vw",
     height: "auto",
     padding: theme.spacing(2),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       width: "50vw"
     },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down("xs")]: {
       width: "80vw"
     },
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up("lg")]: {
       width: "30vw"
-    },
+    }
   },
   tabs: {
     backgroundColor: theme.palette.background.paper,
@@ -70,12 +76,37 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Auth(props) {
+  const { login } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [inputValues, setInputValues] = React.useState({
+    "email-login": "test@test.gmail",
+    "password-login": "1234567",
+    "email-register": "test@test.gmail",
+    "phone-register": "22-22-22-22",
+    "password-register": "1234567",
+    "confirm password-register": "1234567"
+  });
 
-  const handleChange = (event, newValue) => {
+  const handleChange = name => event => {
+    console.log(name, event.target.value);
+    setInputValues({ ...inputValues, [name]: event.target.value });
+  };
+
+  const handleChangeValue = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const signIn = e => {
+    console.log(inputValues);
+    login(inputValues["email-login"], inputValues["password-login"]);
+    e.preventDefault();
+  };
+
+  const register = e => {
+    console.log(inputValues);
+    e.preventDefault();
   };
 
   return (
@@ -89,7 +120,7 @@ function Auth(props) {
         <div className={classes.tabs}>
           <Tabs
             value={value}
-            onChange={handleChange}
+            onChange={handleChangeValue}
             textColor="secondary"
             variant="fullWidth"
           >
@@ -97,37 +128,53 @@ function Auth(props) {
             <Tab label="REGISTER" {...a11yProps(1)} />
           </Tabs>
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <form noValidate>
+            <form noValidate onSubmit={signIn}>
               <AppInput
                 name="email"
                 type="email"
-                defaultValue="test@test.gmail"
+                defaultValue={inputValues["email-login"]}
+                handleChange={handleChange}
+                layout="login"
               />
               <AppInput
                 name="password"
                 type="password"
-                defaultValue="1234567"
+                defaultValue={inputValues["password-login"]}
+                handleChange={handleChange}
+                layout="login"
               />
               <AppButton>Sign in</AppButton>
             </form>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <form noValidate>
+            <form noValidate onSubmit={register}>
               <AppInput
                 name="email"
                 type="email"
-                defaultValue="test@test.gmail"
+                defaultValue={inputValues["email-register"]}
+                handleChange={handleChange}
+                layout="register"
               />
-              <AppInput name="phone no" type="phone" defaultValue="123-456-7" />
+              <AppInput
+                name="phone no"
+                type="phone"
+                defaultValue={inputValues["phone-register"]}
+                handleChange={handleChange}
+                layout="register"
+              />
               <AppInput
                 name="password"
                 type="password"
-                defaultValue="1234567"
+                defaultValue={inputValues["password-register"]}
+                handleChange={handleChange}
+                layout="register"
               />
               <AppInput
                 name="confirm password"
                 type="password"
-                defaultValue="1234567"
+                defaultValue={inputValues["confirm password-register"]}
+                handleChange={handleChange}
+                layout="register"
               />
               <AppButton>Register</AppButton>
             </form>
@@ -140,4 +187,10 @@ function Auth(props) {
 
 Auth.propTypes = propTypes;
 
-export default Auth;
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(Auth);

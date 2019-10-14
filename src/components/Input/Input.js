@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function AppInput(props) {
   const classes = useStyles();
-  const { name, defaultValue, type } = props;
+  const { name, defaultValue, type, handleChange, layout } = props;
 
   return (
     <FormControl className={classes.root}>
@@ -45,6 +45,7 @@ export default function AppInput(props) {
         id="validation-outlined-input"
         type={type}
         defaultValue={defaultValue}
+        onChange={handleChange(`${name}-${layout}`)}
       />
     </FormControl>
   );

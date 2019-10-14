@@ -5,6 +5,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./store/reducers";
 import reduxThunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
@@ -15,12 +17,18 @@ const store = createStore(
   composeEnhancers(applyMiddleware(reduxThunk))
 );
 
+const client = new ApolloClient({
+  uri: "https://justogaming-backend.herokuapp.com/graphql"
+});
+
 const AppStore = () => (
-  <Provider store={store}>
-    <BrowserRouter basename={"/"}>
-      <App />
-    </BrowserRouter>
-  </Provider>
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <BrowserRouter basename={"/"}>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </ApolloProvider>
 );
 
 ReactDOM.render(<AppStore />, document.getElementById("root"));
