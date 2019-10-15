@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./store/reducers";
 import reduxThunk from "redux-thunk";
-import { BrowserRouter } from "react-router";
+import { BrowserRouter } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
