@@ -8,11 +8,12 @@ import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
 const GET_ME = gql`
-  query GetMe($id: ID!, $username: String!, $affiliateCode: String!) {
-    getMe(id: $id, username: $username, affiliateCode: $affiliateCode) {
+  {
+    getMe {
       id
+      affiliateCode
+      email
       username
-      afflitiateCode
     }
   }
 `;
@@ -27,9 +28,7 @@ function Layout(props) {
   const affiliateCode = localStorage.getItem("cryptoAffiliateCode");
   console.log(id, username, affiliateCode);
 
-  let { loading, error, data } = useQuery(GET_ME, {
-    variables: { id: idUser, username, affiliateCode }
-  });
+  let { loading, error, data } = useQuery(GET_ME);
   if (data) {
     setUserId(data.id);
   }

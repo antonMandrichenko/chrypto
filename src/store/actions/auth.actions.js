@@ -1,5 +1,4 @@
 import { userConstants } from "../constants/auth.constants";
-import { userService } from "../../services/auth.servise";
 
 export const userActions = {
   loginSuccess,
