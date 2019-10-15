@@ -6,7 +6,7 @@ import rootReducer from "./store/reducers";
 import reduxThunk from "redux-thunk";
 import { BrowserRouter } from "react-router-dom";
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import { ApolloProvider } from "@apollo/react-hooks";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
