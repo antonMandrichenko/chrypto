@@ -1,7 +1,5 @@
 import React from "react";
-import { fade, withStyles, makeStyles } from "@material-ui/core/styles";
-import InputBase from "@material-ui/core/InputBase";
-import InputLabel from "@material-ui/core/InputLabel";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 
