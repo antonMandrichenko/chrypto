@@ -59,7 +59,9 @@ const useStyles = makeStyles(theme => ({
   paper: {
     width: "40vw",
     height: "auto",
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
+    borderRadius: 10,
+    border: "1px solid #2b3044",
     [theme.breakpoints.down("sm")]: {
       width: "50vw"
     },
@@ -70,9 +72,15 @@ const useStyles = makeStyles(theme => ({
       width: "30vw"
     }
   },
+  colorSecondary: {
+    background: "linear-gradient(131deg, #da1b60 0%, #ff8a00 100%)"
+  },
   tabs: {
     backgroundColor: theme.palette.background.paper,
     width: "100%"
+  },
+  "Mui-selected": {
+    color: "#fff !important"
   }
 }));
 
@@ -87,12 +95,12 @@ function Auth(props) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [inputValues, setInputValues] = React.useState({
-    "email-login": "test@test.gmail",
-    "password-login": "1234567",
-    "email-register": "test@test.gmail",
-    "phone-register": "22-22-22-22",
-    "password-register": "1234567",
-    "confirm password-register": "1234567"
+    "email-login": "",
+    "password-login": "",
+    "email-register": "",
+    "phone-register": "",
+    "password-register": "",
+    "confirm password-register": ""
   });
 
   const [signUp] = useMutation(SIGN_UP);
@@ -146,6 +154,15 @@ function Auth(props) {
       className={classes.root}
     >
       <Paper className={classes.paper}>
+        <h6
+          style={{
+            textAlign: "center",
+            color: "#fff",
+            fontSize: 15
+          }}
+        >
+          SETTINGS
+        </h6>
         <div className={classes.tabs}>
           <Tabs
             value={value}
@@ -153,22 +170,20 @@ function Auth(props) {
             textColor="secondary"
             variant="fullWidth"
           >
-            <Tab label="LOGIN" {...a11yProps(0)} />
-            <Tab label="REGISTER" {...a11yProps(1)} />
+            <Tab label="LOGIN" {...a11yProps(0)} className={classes["Mui-selected"]}/>
+            <Tab label="REGISTER" {...a11yProps(1)} className={classes["Mui-selected"]} />
           </Tabs>
           <TabPanel value={value} index={0} dir={theme.direction}>
             <form noValidate onSubmit={signIn}>
               <AppInput
                 name="email"
                 type="email"
-                defaultValue={inputValues["email-login"]}
                 handleChange={handleChange}
                 layout="login"
               />
               <AppInput
                 name="password"
                 type="password"
-                defaultValue={inputValues["password-login"]}
                 handleChange={handleChange}
                 layout="login"
               />
@@ -180,34 +195,43 @@ function Auth(props) {
               <AppInput
                 name="email"
                 type="email"
-                defaultValue={inputValues["email-register"]}
                 handleChange={handleChange}
                 layout="register"
               />
               <AppInput
                 name="phone no"
                 type="phone"
-                defaultValue={inputValues["phone-register"]}
                 handleChange={handleChange}
                 layout="register"
               />
               <AppInput
                 name="password"
                 type="password"
-                defaultValue={inputValues["password-register"]}
                 handleChange={handleChange}
                 layout="register"
               />
               <AppInput
                 name="confirm password"
                 type="password"
-                defaultValue={inputValues["confirm password-register"]}
                 handleChange={handleChange}
                 layout="register"
               />
               <AppButton>Register</AppButton>
             </form>
           </TabPanel>
+          <h6
+            className="text-center"
+            style={{
+              textAlign: "center",
+              color: "#737375",
+              fontSize: 14,
+              fontFamily: "FuturaPTDemi",
+              marginTop: 18,
+              marginBottom: 0
+            }}
+          >
+            Forgot Password
+          </h6>
         </div>
       </Paper>
     </Grid>

@@ -9,6 +9,7 @@ import { createBrowserHistory } from "history";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import App from "./App";
+import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
