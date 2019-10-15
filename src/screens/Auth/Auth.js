@@ -13,7 +13,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { mapStateToProps, mapDispatchToProps } from "./redux";
-import { Mutation } from "react-apollo";
+import { SIGN_UP, LOGIN } from "./graphql";
+import { useMutation } from "@apollo/react-hooks";
 
 const propTypes = {};
 
@@ -76,7 +77,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Auth(props) {
-  const { login } = props;
+  const {
+    loginSuccess,
+    registrationSuccess,
+    registrationFailure,
+    loginFailure
+  } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
@@ -89,6 +95,9 @@ function Auth(props) {
     "confirm password-register": "1234567"
   });
 
+  const [signUp] = useMutation(SIGN_UP);
+  const [login] = useMutation(LOGIN);
+
   const handleChange = name => event => {
     console.log(name, event.target.value);
     setInputValues({ ...inputValues, [name]: event.target.value });
@@ -98,15 +107,35 @@ function Auth(props) {
     setValue(newValue);
   };
 
-  const signIn = e => {
-    console.log(inputValues);
-    login(inputValues["email-login"], inputValues["password-login"]);
+  const signIn = async e => {
     e.preventDefault();
+    const loginData = await login({
+      variables: {
+        username: inputValues["email-login"],
+        password: inputValues["password-login"]
+      }
+    });
+    if (loginData.errors) {
+      loginFailure(loginData.errors[0].massage);
+    } else {
+      loginSuccess(loginData);
+    }
   };
 
-  const register = e => {
-    console.log(inputValues);
+  const register = async e => {
     e.preventDefault();
+    console.log(inputValues);
+    const registerData = await signUp({
+      variables: {
+        username: inputValues["email-register"],
+        password: inputValues["password-register"]
+      }
+    });
+    if (registerData.errors) {
+      registrationFailure(registerData.errors[0].massage);
+    } else {
+      registrationSuccess(registerData);
+    }
   };
 
   return (

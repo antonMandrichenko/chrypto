@@ -10,12 +10,10 @@ export const mapStateToProps = state => {
 
 export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    login: (userName, password) =>
-      dispatch(userActions.login(ownProps, dispatch, userName, password))
-    // logout: userActions.logout
-    // signInSubmit: (data) =>
-    //   dispatch(signIn(ownProps, dispatch, data)),
-    // getCurrentUser: (users, id) =>
-    //   dispatch(getCurrentUser(users, id))
+    loginSuccess: data => dispatch(userActions.loginSuccess(ownProps, dispatch, data)),
+    loginFailure: data => dispatch(userActions.loginFailure(ownProps, dispatch, data)),
+    registrationSuccess: data =>
+      dispatch(userActions.registrationSuccess(ownProps, data)),
+    registrationFailure: err => dispatch(userActions.registrationFailure(err))
   };
 };
