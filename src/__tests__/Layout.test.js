@@ -1,17 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import App from "./App";
-import { MemoryRouter } from "react-router-dom";
-import { MockedProvider } from "@apollo/react-testing";
+import Layout from "../screens/Layout";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import rootReducer from "./store/reducers";
+import rootReducer from "../store/reducers";
+import { MockedProvider } from "@apollo/react-testing";
+import { MemoryRouter } from "react-router-dom";
 
 const initialState = {};
 
-function renderWithRedux(
+function renderWithReduxApollo(
   ui,
   { initialState, store = createStore(rootReducer, initialState) } = {}
 ) {
@@ -25,13 +24,11 @@ function renderWithRedux(
   };
 }
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  renderWithRedux(
+it("loads and displays Layout", async () => {
+  const { asFragment } = renderWithReduxApollo(
     <MemoryRouter>
-      <App />
-    </MemoryRouter>,
-    div
+      <Layout name="Buck" />
+    </MemoryRouter>
   );
-  ReactDOM.unmountComponentAtNode(div);
+  expect(asFragment()).toMatchSnapshot();
 });

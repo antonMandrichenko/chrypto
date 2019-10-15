@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { mapStateToProps } from "./redux";
@@ -26,7 +26,6 @@ function Layout(props) {
   const idUser = localStorage.getItem("cryptoId");
   const username = localStorage.getItem("cryptoUsername");
   const affiliateCode = localStorage.getItem("cryptoAffiliateCode");
-  console.log(id, username, affiliateCode);
 
   let { loading, error, data } = useQuery(GET_ME);
   if (data) {
@@ -36,7 +35,7 @@ function Layout(props) {
   if (loading) return null;
 
   if (!userId || error) {
-    props.history.push("/auth");
+    return <Redirect to="/auth" />
   }
   if (id) {
     return <div>`You are register in crypto. Yor're id is ${id}`</div>;

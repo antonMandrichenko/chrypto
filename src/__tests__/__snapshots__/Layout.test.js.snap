@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads and displays Layout 1`] = `<DocumentFragment />`;
+
+exports[`loads and displays auth form 1`] = `<DocumentFragment />`;

@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`loads and displays auth form 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiGrid-root makeStyles-root-1 MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-center"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-2 MuiPaper-rounded"
+    >
+      <div
+        class="makeStyles-tabs-3"
+      >
+        <div
+          class="MuiTabs-root"
+        >
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer"
+              role="tablist"
+            >
+              <button
+                aria-controls="full-width-tabpanel-0"
+                aria-selected="true"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorSecondary Mui-selected MuiTab-fullWidth"
+                id="full-width-tab-0"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  LOGIN
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-controls="full-width-tabpanel-1"
+                aria-selected="false"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorSecondary MuiTab-fullWidth"
+                id="full-width-tab-1"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  REGISTER
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-158 PrivateTabIndicator-colorSecondary-160 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+        <div
+          aria-labelledby="full-width-tab-0"
+          class="MuiTypography-root MuiTypography-body1"
+          dir="ltr"
+          id="full-width-tabpanel-0"
+          role="tabpanel"
+        >
+          <div
+            class="MuiBox-root MuiBox-root-193"
+          >
+            <form
+              novalidate=""
+            >
+              <div
+                class="MuiFormControl-root makeStyles-root-194"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink="true"
+                    for="validation-outlined-input"
+                  >
+                    EMAIL
+                    <span
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="validation-outlined-input"
+                      required=""
+                      type="email"
+                      value="test@test.gmail"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root makeStyles-root-194"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink="true"
+                    for="validation-outlined-input"
+                  >
+                    PASSWORD
+                    <span
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="validation-outlined-input"
+                      required=""
+                      type="password"
+                      value="1234567"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button
+                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-251 MuiButton-text"
+                tabindex="0"
+                type="submit"
+              >
+                <span
+                  class="MuiButton-label WithStyles(ForwardRef(Button))-label-252"
+                >
+                  SIGN IN
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </form>
+          </div>
+        </div>
+        <div
+          aria-labelledby="full-width-tab-1"
+          class="MuiTypography-root MuiTypography-body1"
+          dir="ltr"
+          hidden=""
+          id="full-width-tabpanel-1"
+          role="tabpanel"
+        >
+          <div
+            class="MuiBox-root MuiBox-root-281"
+          >
+            <form
+              novalidate=""
+            >
+              <div
+                class="MuiFormControl-root makeStyles-root-194"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink="true"
+                    for="validation-outlined-input"
+                  >
+                    EMAIL
+                    <span
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="validation-outlined-input"
+                      required=""
+                      type="email"
+                      value="test@test.gmail"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root makeStyles-root-194"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink="true"
+                    for="validation-outlined-input"
+                  >
+                    PHONE NO
+                    <span
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="validation-outlined-input"
+                      required=""
+                      type="phone"
+                      value="22-22-22-22"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root makeStyles-root-194"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink="true"
+                    for="validation-outlined-input"
+                  >
+                    PASSWORD
+                    <span
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="validation-outlined-input"
+                      required=""
+                      type="password"
+                      value="1234567"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root makeStyles-root-194"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
+                    data-shrink="true"
+                    for="validation-outlined-input"
+                  >
+                    CONFIRM PASSWORD
+                    <span
+                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+                    >
+                       *
+                    </span>
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="validation-outlined-input"
+                      required=""
+                      type="password"
+                      value="1234567"
+                    />
+                  </div>
+                </div>
+              </div>
+              <button
+                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-251 MuiButton-text"
+                tabindex="0"
+                type="submit"
+              >
+                <span
+                  class="MuiButton-label WithStyles(ForwardRef(Button))-label-252"
+                >
+                  REGISTER
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -112,7 +112,7 @@ function Auth(props) {
     const loginData = await login({
       variables: {
         username: inputValues["email-login"],
-        password: inputValues["password-login"]
+        password: inputValues["password-login"].toString()
       }
     });
     if (loginData.errors) {
