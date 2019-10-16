@@ -15,22 +15,24 @@ export const fetch = (state = initialState, action) => {
       };
     case fetchConstants.FETCH_SUCCESS:
       return {
-        ...state,
         isLoading: false,
         error: ""
       };
     case fetchConstants.FETCH_FAILURE:
       return {
-        ...state,
         isLoading: false,
         error: action.error
       };
     case fetchConstants.NO_RESPONSE:
       return {
-        ...state,
         isLoading: false,
         error: "No response from server"
       };
+      case fetchConstants.NO_FETCH:
+        return {
+          isLoading: false,
+          error: ""
+        }
     default:
       return state;
   }

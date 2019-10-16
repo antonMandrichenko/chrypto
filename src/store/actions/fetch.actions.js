@@ -1,7 +1,5 @@
 import { fetchConstants } from "../constants/fetch.constants";
 
-
-
 const fetchBegin = () => dispatch => {
   dispatch({ type: fetchConstants.FETCH_BEGIN });
 };
@@ -15,13 +13,17 @@ const fetchFailure = error => dispatch => {
 };
 
 const noResponse = () => dispatch => {
-    dispatch({ type: fetchConstants.NO_RESPONSE });
-  };
+  dispatch({ type: fetchConstants.NO_RESPONSE });
+};
 
-  export const fetchActions = {
-    fetchBegin,
-    fetchSuccess,
-    fetchFailure,
-    noResponse
-  };
+const noFetch = () => dispatch => {
+  dispatch({ type: fetchConstants.NO_FETCH });
+};
 
+export const fetchActions = {
+  fetchBegin,
+  fetchSuccess,
+  fetchFailure,
+  noResponse,
+  noFetch
+};
