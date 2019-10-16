@@ -1,6 +1,7 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import LoadCircularProgress from "../CircularProgress";
 
 // The `withStyles()` higher-order component is injecting a `classes`
 // prop that is used by the `Button` component.
@@ -20,8 +21,26 @@ const StyledButton = withStyles({
   }
 })(Button);
 
+const useStyles = makeStyles(() => ({
+  buttonProgress: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginTop: -12,
+    marginLeft: -12
+  }
+}));
+
 export default function AppButton(props) {
+  const classes = useStyles();
+  const { isLoading } = props;
   return (
-    <StyledButton type="submit">{props.children.toUpperCase()}</StyledButton>
+    <StyledButton type="submit" disabled={isLoading}>
+      {isLoading ? (
+        <LoadCircularProgress className={classes.buttonProgress} size={24} />
+      ) : (
+        props.children.toUpperCase()
+      )}
+    </StyledButton>
   );
 }
