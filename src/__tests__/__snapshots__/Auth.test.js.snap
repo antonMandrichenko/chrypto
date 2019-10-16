@@ -8,8 +8,13 @@ exports[`loads and displays auth form 1`] = `
     <div
       class="MuiPaper-root MuiPaper-elevation1 makeStyles-paper-2 MuiPaper-rounded"
     >
+      <h6
+        style="text-align: center; color: rgb(255, 255, 255); font-size: 15px;"
+      >
+        SETTINGS
+      </h6>
       <div
-        class="makeStyles-tabs-3"
+        class="makeStyles-tabs-4"
       >
         <div
           class="MuiTabs-root"
@@ -25,7 +30,7 @@ exports[`loads and displays auth form 1`] = `
               <button
                 aria-controls="full-width-tabpanel-0"
                 aria-selected="true"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorSecondary Mui-selected MuiTab-fullWidth"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorSecondary makeStyles-Mui-selected-5 Mui-selected MuiTab-fullWidth"
                 id="full-width-tab-0"
                 role="tab"
                 tabindex="0"
@@ -43,7 +48,7 @@ exports[`loads and displays auth form 1`] = `
               <button
                 aria-controls="full-width-tabpanel-1"
                 aria-selected="false"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorSecondary MuiTab-fullWidth"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorSecondary makeStyles-Mui-selected-5 MuiTab-fullWidth"
                 id="full-width-tab-1"
                 role="tab"
                 tabindex="0"
@@ -60,7 +65,7 @@ exports[`loads and displays auth form 1`] = `
               </button>
             </div>
             <span
-              class="PrivateTabIndicator-root-158 PrivateTabIndicator-colorSecondary-160 MuiTabs-indicator"
+              class="PrivateTabIndicator-root-160 PrivateTabIndicator-colorSecondary-162 MuiTabs-indicator"
               style="left: 0px; width: 0px;"
             />
           </div>
@@ -73,82 +78,48 @@ exports[`loads and displays auth form 1`] = `
           role="tabpanel"
         >
           <div
-            class="MuiBox-root MuiBox-root-193"
+            class="MuiBox-root MuiBox-root-195"
           >
             <form
               novalidate=""
             >
               <div
-                class="MuiFormControl-root makeStyles-root-194"
+                class="form-group"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
+                <label
+                  class="mylabel"
+                  for="email-login"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
-                    data-shrink="true"
-                    for="validation-outlined-input"
-                  >
-                    EMAIL
-                    <span
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       *
-                    </span>
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      id="validation-outlined-input"
-                      required=""
-                      type="email"
-                      value="test@test.gmail"
-                    />
-                  </div>
-                </div>
+                  EMAIL
+                </label>
+                <input
+                  class="form-control form-control-lg myinputclass"
+                  id="email-login"
+                  type="email"
+                />
               </div>
               <div
-                class="MuiFormControl-root makeStyles-root-194"
+                class="form-group"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
+                <label
+                  class="mylabel"
+                  for="password-login"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
-                    data-shrink="true"
-                    for="validation-outlined-input"
-                  >
-                    PASSWORD
-                    <span
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       *
-                    </span>
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      id="validation-outlined-input"
-                      required=""
-                      type="password"
-                      value="1234567"
-                    />
-                  </div>
-                </div>
+                  PASSWORD
+                </label>
+                <input
+                  class="form-control form-control-lg myinputclass"
+                  id="password-login"
+                  type="password"
+                />
               </div>
               <button
-                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-251 MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-198 MuiButton-text"
                 tabindex="0"
                 type="submit"
               >
                 <span
-                  class="MuiButton-label WithStyles(ForwardRef(Button))-label-252"
+                  class="MuiButton-label WithStyles(ForwardRef(Button))-label-199"
                 >
                   SIGN IN
                 </span>
@@ -168,146 +139,78 @@ exports[`loads and displays auth form 1`] = `
           role="tabpanel"
         >
           <div
-            class="MuiBox-root MuiBox-root-281"
+            class="MuiBox-root MuiBox-root-228"
           >
             <form
               novalidate=""
             >
               <div
-                class="MuiFormControl-root makeStyles-root-194"
+                class="form-group"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
+                <label
+                  class="mylabel"
+                  for="email-register"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
-                    data-shrink="true"
-                    for="validation-outlined-input"
-                  >
-                    EMAIL
-                    <span
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       *
-                    </span>
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      id="validation-outlined-input"
-                      required=""
-                      type="email"
-                      value="test@test.gmail"
-                    />
-                  </div>
-                </div>
+                  EMAIL
+                </label>
+                <input
+                  class="form-control form-control-lg myinputclass"
+                  id="email-register"
+                  type="email"
+                />
               </div>
               <div
-                class="MuiFormControl-root makeStyles-root-194"
+                class="form-group"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
+                <label
+                  class="mylabel"
+                  for="phone-register"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
-                    data-shrink="true"
-                    for="validation-outlined-input"
-                  >
-                    PHONE NO
-                    <span
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       *
-                    </span>
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      id="validation-outlined-input"
-                      required=""
-                      type="phone"
-                      value="22-22-22-22"
-                    />
-                  </div>
-                </div>
+                  PHONE
+                </label>
+                <input
+                  class="form-control form-control-lg myinputclass"
+                  id="phone-register"
+                  type="phone"
+                />
               </div>
               <div
-                class="MuiFormControl-root makeStyles-root-194"
+                class="form-group"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
+                <label
+                  class="mylabel"
+                  for="password-register"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
-                    data-shrink="true"
-                    for="validation-outlined-input"
-                  >
-                    PASSWORD
-                    <span
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       *
-                    </span>
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      id="validation-outlined-input"
-                      required=""
-                      type="password"
-                      value="1234567"
-                    />
-                  </div>
-                </div>
+                  PASSWORD
+                </label>
+                <input
+                  class="form-control form-control-lg myinputclass"
+                  id="password-register"
+                  type="password"
+                />
               </div>
               <div
-                class="MuiFormControl-root makeStyles-root-194"
+                class="form-group"
               >
-                <div
-                  class="MuiFormControl-root MuiTextField-root"
+                <label
+                  class="mylabel"
+                  for="confirm password-register"
                 >
-                  <label
-                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled Mui-required Mui-required"
-                    data-shrink="true"
-                    for="validation-outlined-input"
-                  >
-                    CONFIRM PASSWORD
-                    <span
-                      class="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-                    >
-                       *
-                    </span>
-                  </label>
-                  <div
-                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
-                  >
-                    <input
-                      aria-invalid="false"
-                      class="MuiInputBase-input MuiInput-input"
-                      id="validation-outlined-input"
-                      required=""
-                      type="password"
-                      value="1234567"
-                    />
-                  </div>
-                </div>
+                  CONFIRM PASSWORD
+                </label>
+                <input
+                  class="form-control form-control-lg myinputclass"
+                  id="confirm password-register"
+                  type="password"
+                />
               </div>
               <button
-                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-251 MuiButton-text"
+                class="MuiButtonBase-root MuiButton-root WithStyles(ForwardRef(Button))-root-198 MuiButton-text"
                 tabindex="0"
                 type="submit"
               >
                 <span
-                  class="MuiButton-label WithStyles(ForwardRef(Button))-label-252"
+                  class="MuiButton-label WithStyles(ForwardRef(Button))-label-199"
                 >
                   REGISTER
                 </span>
@@ -318,6 +221,12 @@ exports[`loads and displays auth form 1`] = `
             </form>
           </div>
         </div>
+        <h6
+          class="text-center"
+          style="text-align: center; color: rgb(115, 115, 117); font-size: 14px; font-family: FuturaPTDemi; margin-top: 18px; margin-bottom: 0px;"
+        >
+          Forgot Password
+        </h6>
       </div>
     </div>
   </div>
