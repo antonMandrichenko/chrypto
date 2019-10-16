@@ -157,7 +157,6 @@ function Auth(props) {
   const signIn = async e => {
     e.preventDefault();
 
-    console.log("begin");
     const email = inputValues["email-login"];
     const password = inputValues["password-login"];
     if (validatedForm(email, password)) {
