@@ -1,2 +1,2 @@
-import CircularProgress from "./CircularProgress";
-export default CircularProgress;
+import LoadCircularProgress from "./CircularProgress";
+export default LoadCircularProgress;
