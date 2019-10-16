@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function AppInput(props) {
   const classes = useStyles();
-  const { name, type, handleChange, layout } = props;
+  const { name, type, handleChange, layout, isLoading } = props;
 
   return (
     <div className="form-group">
@@ -25,6 +25,7 @@ export default function AppInput(props) {
         className="form-control form-control-lg myinputclass"
         id={`${name}-${layout}`}
         onChange={handleChange(`${name}-${layout}`)}
+        disabled={isLoading}
       />
     </div>
   );
