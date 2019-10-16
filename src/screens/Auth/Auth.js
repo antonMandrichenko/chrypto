@@ -94,6 +94,7 @@ function Auth(props) {
     fetchSuccess,
     fetchFailure,
     noResponse,
+    noFetch,
     isLoading,
     errorLoading
   } = props;
@@ -114,51 +115,95 @@ function Auth(props) {
 
   const handleChange = name => event => {
     console.log(name, event.target.value);
+    errorLoading && noFetch();
     setInputValues({ ...inputValues, [name]: event.target.value });
   };
 
   const handleChangeValue = (event, newValue) => {
+    errorLoading && noFetch();
     setValue(newValue);
+  };
+
+  const validatedForm = (email, password, confirmPassword, phone) => {
+    const isValidEmail = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
+    const isValidPassword = password.length > 6;
+    const isPasswordConfirm = confirmPassword
+      ? password === confirmPassword
+      : null;
+    const isValidPhone = phone
+      ? /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(phone)
+      : null;
+    if (!isValidEmail) {
+      fetchFailure("Not valid email");
+      return false;
+    }
+    if (!isValidPassword) {
+      fetchFailure("Not valid password. Password must have more 6 symbols");
+      return false;
+    }
+    if (confirmPassword || confirmPassword === "" || phone || phone === "") {
+      if (!isValidPhone) {
+        fetchFailure("Not valid phone number");
+        return false;
+      }
+      if (!isPasswordConfirm) {
+        fetchFailure("Not confirm password");
+        return false;
+      }
+    }
+    return true;
   };
 
   const signIn = async e => {
     e.preventDefault();
-    fetchBegin();
-    const loginData = await login({
-      variables: {
-        username: inputValues["email-login"],
-        password: inputValues["password-login"].toString()
-      }
-    });
-    if (!loginData) {
-      noResponse();
-    } else {
-      if (loginData.errors) {
-        fetchFailure(loginData.errors[0].massage);
-      } else {
-        fetchSuccess();
-        loginSuccess(loginData);
+
+    console.log("begin");
+    const email = inputValues["email-login"];
+    const password = inputValues["password-login"];
+    if (validatedForm(email, password)) {
+      try {
+        fetchBegin();
+        const loginData = await login({
+          variables: {
+            username: email,
+            password
+          }
+        });
+        if (!loginData) {
+          noResponse();
+        } else {
+          fetchSuccess();
+          loginSuccess(loginData);
+        }
+      } catch (e) {
+        fetchFailure(e.message);
       }
     }
   };
 
   const register = async e => {
     e.preventDefault();
-    fetchBegin();
-    const registerData = await signUp({
-      variables: {
-        username: inputValues["email-register"],
-        password: inputValues["password-register"]
-      }
-    });
-    if (!registerData) {
-      noResponse();
-    } else {
-      if (registerData.errors) {
-        fetchFailure(registerData.errors[0].massage);
-      } else {
-        fetchSuccess();
-        registrationSuccess(registerData);
+    const email = inputValues["email-register"];
+    const password = inputValues["password-register"];
+    const confirmPassword = inputValues["confirm password-register"];
+    const phoneNumber = inputValues["phone-register"];
+    if (validatedForm(email, password, confirmPassword, phoneNumber)) {
+      try {
+        fetchBegin();
+        const registerData = await signUp({
+          variables: {
+            username: inputValues["email-register"],
+            password: inputValues["password-register"]
+          }
+        });
+        if (!registerData) {
+          noResponse();
+        } else {
+          fetchSuccess();
+          registrationSuccess(registerData);
+        }
+      } catch (e) {
+        fetchFailure(e.message);
       }
     }
   };
@@ -229,7 +274,7 @@ function Auth(props) {
                 isLoading={isLoading}
               />
               <AppInput
-                name="phone no"
+                name="phone"
                 type="phone"
                 handleChange={handleChange}
                 layout="register"
@@ -252,6 +297,13 @@ function Auth(props) {
               <AppButton isLoading={isLoading}>Register</AppButton>
             </form>
           </TabPanel>
+          {errorLoading !== "" && (
+            <Typography color="error">
+              {typeof errorLoading === "string"
+                ? errorLoading.replace("GraphQL error:", "")
+                : errorLoading}
+            </Typography>
+          )}
           <h6
             className="text-center"
             style={{
