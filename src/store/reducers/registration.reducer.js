@@ -8,13 +8,7 @@ export function registration(state = {}, action) {
         token: action.data.data.signUp.token,
         affiliateCode: action.data.data.signUp.user.affiliateCode,
         id: action.data.data.signUp.user.id,
-        username: action.data.data.signUp.user.username,
-        error: ""
-      };
-    case userConstants.REGISTER_FAILURE:
-      return {
-        ...state,
-        error: action.err
+        username: action.data.data.signUp.user.username
       };
     default:
       return state;

@@ -12,11 +12,8 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     loginSuccess: data =>
       dispatch(userActions.loginSuccess(ownProps, dispatch, data)),
-    loginFailure: data =>
-      dispatch(userActions.loginFailure(ownProps, dispatch, data)),
     registrationSuccess: data =>
       dispatch(userActions.registrationSuccess(ownProps, data)),
-    registrationFailure: err => dispatch(userActions.registrationFailure(err)),
     fetchBegin: () => dispatch(fetchActions.fetchBegin()),
     fetchSuccess: () => dispatch(fetchActions.fetchSuccess()),
     fetchFailure: err => dispatch(fetchActions.fetchFailure(err)),

@@ -88,8 +88,6 @@ function Auth(props) {
   const {
     loginSuccess,
     registrationSuccess,
-    registrationFailure,
-    loginFailure,
     fetchBegin,
     fetchSuccess,
     fetchFailure,
@@ -114,7 +112,6 @@ function Auth(props) {
   const [login] = useMutation(LOGIN);
 
   const handleChange = name => event => {
-    console.log(name, event.target.value);
     errorLoading && noFetch();
     setInputValues({ ...inputValues, [name]: event.target.value });
   };
