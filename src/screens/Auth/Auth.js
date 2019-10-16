@@ -144,17 +144,22 @@ function Auth(props) {
 
   const register = async e => {
     e.preventDefault();
-    console.log(inputValues);
+    fetchBegin();
     const registerData = await signUp({
       variables: {
         username: inputValues["email-register"],
         password: inputValues["password-register"]
       }
     });
-    if (registerData.errors) {
-      registrationFailure(registerData.errors[0].massage);
+    if (!registerData) {
+      noResponse();
     } else {
-      registrationSuccess(registerData);
+      if (registerData.errors) {
+        fetchFailure(registerData.errors[0].massage);
+      } else {
+        fetchSuccess();
+        registrationSuccess(registerData);
+      }
     }
   };
 
@@ -181,7 +186,6 @@ function Auth(props) {
             onChange={handleChangeValue}
             textColor="secondary"
             variant="fullWidth"
-            
           >
             <Tab
               label="LOGIN"
