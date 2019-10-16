@@ -89,7 +89,13 @@ function Auth(props) {
     loginSuccess,
     registrationSuccess,
     registrationFailure,
-    loginFailure
+    loginFailure,
+    fetchBegin,
+    fetchSuccess,
+    fetchFailure,
+    noResponse,
+    isLoading,
+    errorLoading
   } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -117,16 +123,22 @@ function Auth(props) {
 
   const signIn = async e => {
     e.preventDefault();
+    fetchBegin();
     const loginData = await login({
       variables: {
         username: inputValues["email-login"],
         password: inputValues["password-login"].toString()
       }
     });
-    if (loginData.errors) {
-      loginFailure(loginData.errors[0].massage);
+    if (!loginData) {
+      noResponse();
     } else {
-      loginSuccess(loginData);
+      if (loginData.errors) {
+        fetchFailure(loginData.errors[0].massage);
+      } else {
+        fetchSuccess();
+        loginSuccess(loginData);
+      }
     }
   };
 
@@ -169,9 +181,20 @@ function Auth(props) {
             onChange={handleChangeValue}
             textColor="secondary"
             variant="fullWidth"
+            
           >
-            <Tab label="LOGIN" {...a11yProps(0)} className={classes["Mui-selected"]}/>
-            <Tab label="REGISTER" {...a11yProps(1)} className={classes["Mui-selected"]} />
+            <Tab
+              label="LOGIN"
+              {...a11yProps(0)}
+              className={classes["Mui-selected"]}
+              disabled={isLoading}
+            />
+            <Tab
+              label="REGISTER"
+              {...a11yProps(1)}
+              className={classes["Mui-selected"]}
+              disabled={isLoading}
+            />
           </Tabs>
           <TabPanel value={value} index={0} dir={theme.direction}>
             <form noValidate onSubmit={signIn}>
@@ -180,14 +203,16 @@ function Auth(props) {
                 type="email"
                 handleChange={handleChange}
                 layout="login"
+                isLoading={isLoading}
               />
               <AppInput
                 name="password"
                 type="password"
                 handleChange={handleChange}
                 layout="login"
+                isLoading={isLoading}
               />
-              <AppButton>Sign in</AppButton>
+              <AppButton isLoading={isLoading}>Sign in</AppButton>
             </form>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
@@ -197,26 +222,30 @@ function Auth(props) {
                 type="email"
                 handleChange={handleChange}
                 layout="register"
+                isLoading={isLoading}
               />
               <AppInput
                 name="phone no"
                 type="phone"
                 handleChange={handleChange}
                 layout="register"
+                isLoading={isLoading}
               />
               <AppInput
                 name="password"
                 type="password"
                 handleChange={handleChange}
                 layout="register"
+                isLoading={isLoading}
               />
               <AppInput
                 name="confirm password"
                 type="password"
                 handleChange={handleChange}
                 layout="register"
+                isLoading={isLoading}
               />
-              <AppButton>Register</AppButton>
+              <AppButton isLoading={isLoading}>Register</AppButton>
             </form>
           </TabPanel>
           <h6

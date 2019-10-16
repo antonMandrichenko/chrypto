@@ -1,10 +1,10 @@
 import { userActions } from "../../store/actions/auth.actions";
+import { fetchActions } from "../../store/actions/fetch.actions";
 
 export const mapStateToProps = state => {
   return {
-    // error: state.auth.authError,
-    // auth: state.firebase.auth,
-    // users: state.firestore.ordered.users
+    isLoading: state.fetch.isLoading,
+    errorLoading: state.fetch.error
   };
 };
 
@@ -14,6 +14,11 @@ export const mapDispatchToProps = (dispatch, ownProps) => {
     loginFailure: data => dispatch(userActions.loginFailure(ownProps, dispatch, data)),
     registrationSuccess: data =>
       dispatch(userActions.registrationSuccess(ownProps, data)),
-    registrationFailure: err => dispatch(userActions.registrationFailure(err))
+    registrationFailure: err => dispatch(userActions.registrationFailure(err)),
+    fetchBegin: () => dispatch(fetchActions.fetchBegin()),
+    fetchSuccess: () => dispatch(fetchActions.fetchSuccess()),
+    fetchFailure: (err) => dispatch(fetchActions.fetchFailure(err)),
+    noResponse: () => dispatch(fetchActions.noResponse()),
+
   };
 };
