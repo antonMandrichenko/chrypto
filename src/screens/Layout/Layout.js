@@ -4,6 +4,7 @@ import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { mapStateToProps } from "./redux";
+import Header from "./Header";
 // import gql from "graphql-tag";
 // import { useQuery } from "@apollo/react-hooks";
 
@@ -40,7 +41,8 @@ function Layout(props) {
   // if (id) {
   //   return <div>`You are register in crypto. Yor're id is ${id}`</div>;
   // }
-  return id ? <div>You are in Crypto</div> : <Redirect to="/auth" />
+  // return id ? <div>You are in Crypto</div> : <Redirect to="/auth" />
+  return <Header />
 }
 
 Layout.propTypes = propTypes;
