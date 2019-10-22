@@ -24359,7 +24359,7 @@
     }
   }
   
-  .chartjs-legend ul {
+  /* .chartjs-legend ul {
     margin-bottom: 0;
     list-style: none;
     padding-left: 1.875rem;
@@ -24373,7 +24373,7 @@
     flex-wrap: wrap;
     -webkit-justify-content: start;
     justify-content: start;
-  }
+  } */
   
   .chartjs-legend ul li {
     margin-right: 8%;
