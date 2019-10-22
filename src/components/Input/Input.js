@@ -14,7 +14,6 @@ const BootstrapInput = withStyles(theme => ({
     background: "#100e17",
     borderRadius: 4,
     border: "1px solid #201c29",
-    padding: 6,
     color: theme.palette.text.inputText,
     fontSize: "0.95rem",
     position: "relative",
@@ -34,6 +33,9 @@ const BootstrapInput = withStyles(theme => ({
     "&:focus": {
       color: theme.palette.text.inputTextTyping,
       border: "2px solid #436afe"
+    },
+    "&:hover": {
+      color: theme.palette.text.inputTextTyping
     }
   }
 }))(InputBase);
@@ -46,7 +48,15 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function AppInput(props) {
-  const { name, type, handleChange, layout, isLoading, withError, onFocus } = props;
+  const {
+    name,
+    type,
+    handleChange,
+    layout,
+    isLoading,
+    withError,
+    onFocus
+  } = props;
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -59,7 +69,7 @@ export default function AppInput(props) {
         disabled={isLoading}
         type={type}
         fullWidth
-        className={withError && classes.error}
+        className={withError ? classes.error : null}
         onFocus={onFocus}
       />
     </React.Fragment>

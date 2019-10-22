@@ -49,8 +49,10 @@ export const theme = createMuiTheme({
       }
     },
     Mui: {
-      disabled: {
-        opacity: 0.4
+      "root": {
+        "&$disabled": {
+          "opacity": 0.4
+        }
       }
     }
   }

@@ -9,15 +9,12 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Input from "@material-ui/core/Input";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 import { mapStateToProps, mapDispatchToProps } from "./redux";
 import { SIGN_UP, LOGIN } from "./graphql";
 import { useMutation } from "@apollo/react-hooks";
-
-const propTypes = {};
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -93,6 +90,18 @@ const inputsRegisterTypes = [
   { type: "password", name: "confirm password" }
 ];
 
+const propTypes = {
+  loginSuccess: PropTypes.func.isRequired,
+  registrationSuccess: PropTypes.func.isRequired,
+  fetchBegin: PropTypes.func.isRequired,
+  fetchSuccess: PropTypes.func.isRequired,
+  fetchFailure: PropTypes.func.isRequired,
+  noResponse: PropTypes.func.isRequired,
+  noFetch: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  errorLoading: PropTypes.string.isRequired
+};
+
 function Auth(props) {
   const {
     loginSuccess,
@@ -167,7 +176,6 @@ function Auth(props) {
 
   const signIn = async e => {
     e.preventDefault();
-
     const email = inputValues["email-login"];
     const password = inputValues["password-login"];
     if (validatedForm(email, password)) {
