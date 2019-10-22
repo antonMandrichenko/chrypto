@@ -55,6 +55,12 @@ export const theme = createMuiTheme({
           "opacity": 0.4
         }
       }
+    },
+    MuiSelect: {
+      icon: {
+        color: "#fff"
+      }
     }
+      
   }
 });

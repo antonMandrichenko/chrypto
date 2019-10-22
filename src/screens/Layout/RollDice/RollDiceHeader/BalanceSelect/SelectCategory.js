@@ -11,12 +11,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap"
   },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2)
+  select: {
+    padding: "0 24px 0 0"
   }
 }));
 
@@ -28,10 +24,10 @@ export default function SelectCategory() {
   });
 
   const inputLabel = React.useRef(null);
-//   const [labelWidth, setLabelWidth] = React.useState(0);
-//   React.useEffect(() => {
-//     setLabelWidth(inputLabel.current.offsetWidth);
-//   }, []);
+  //   const [labelWidth, setLabelWidth] = React.useState(0);
+  //   React.useEffect(() => {
+  //     setLabelWidth(inputLabel.current.offsetWidth);
+  //   }, []);
 
   const handleChange = event => {
     setValues(oldValues => ({
@@ -42,22 +38,21 @@ export default function SelectCategory() {
 
   return (
     <form className={classes.root} autoComplete="off">
-      <FormControl className={classes.formControl}>
+      <FormControl>
         <Select
           value={values.age}
           onChange={handleChange}
           displayEmpty
           name="age"
-          className={classes.selectEmpty}
+          classes={{
+            select: classes.select
+          }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
+          <MenuItem value="">BALANCE</MenuItem>
           <MenuItem value={10}>Ten</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>
-        <FormHelperText>Without label</FormHelperText>
       </FormControl>
     </form>
   );

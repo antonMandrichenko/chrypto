@@ -24,10 +24,10 @@ export default function CenteredGrid() {
       <Grid container spacing={3}>
         <Grid item xs={3}>
           <Grid container>
-            <Grid item xs={6}>
+            <Grid item xs={7}>
               <BalanceSelect />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <DepositButton />
             </Grid>
           </Grid>
