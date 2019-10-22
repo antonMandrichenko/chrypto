@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(26)
   },
   appBar: {
-    minHeight: theme.spacing(10)
+    minHeight: theme.spacing(10),
+    backgroundColor: theme.palette.background.paper
   },
   title: {
     flexGrow: 1
