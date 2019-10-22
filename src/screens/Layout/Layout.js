@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { mapStateToProps } from "./redux";
 import Header from "./Header";
+import RollDice from "./RollDice";
 // import gql from "graphql-tag";
 // import { useQuery } from "@apollo/react-hooks";
 
@@ -42,7 +43,12 @@ function Layout(props) {
   //   return <div>`You are register in crypto. Yor're id is ${id}`</div>;
   // }
   // return id ? <div>You are in Crypto</div> : <Redirect to="/auth" />
-  return <Header />
+  return (
+    <React.Fragment>
+      <Header />
+      <RollDice />
+    </React.Fragment>
+  );
 }
 
 Layout.propTypes = propTypes;
