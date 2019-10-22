@@ -9,6 +9,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Input from "@material-ui/core/Input";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { withRouter } from "react-router-dom";
@@ -84,6 +85,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const inputsLoginTypes = ["email", "password"];
+const inputsRegisterTypes = [
+  "email",
+  "phone",
+  "password",
+  { type: "password", name: "confirm password" }
+];
+
 function Auth(props) {
   const {
     loginSuccess,
@@ -99,6 +108,7 @@ function Auth(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+  const [errorInputName, setErrorInputName] = React.useState("");
   const [inputValues, setInputValues] = React.useState({
     "email-login": "",
     "password-login": "",
@@ -131,19 +141,23 @@ function Auth(props) {
       ? /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(phone)
       : null;
     if (!isValidEmail) {
+      setErrorInputName("email");
       fetchFailure("Not valid email");
       return false;
     }
     if (!isValidPassword) {
+      setErrorInputName("password");
       fetchFailure("Not valid password. Password must have more 6 symbols");
       return false;
     }
     if (confirmPassword || confirmPassword === "" || phone || phone === "") {
       if (!isValidPhone) {
+        setErrorInputName("phone");
         fetchFailure("Not valid phone number");
         return false;
       }
       if (!isPasswordConfirm) {
+        setErrorInputName("confirm password");
         fetchFailure("Not confirm password");
         return false;
       }
@@ -168,10 +182,12 @@ function Auth(props) {
         if (!loginData) {
           noResponse();
         } else {
+          setErrorInputName("");
           fetchSuccess();
           loginSuccess(loginData);
         }
       } catch (e) {
+        setErrorInputName("all");
         fetchFailure(e.message);
       }
     }
@@ -195,14 +211,37 @@ function Auth(props) {
         if (!registerData) {
           noResponse();
         } else {
+          setErrorInputName("");
           fetchSuccess();
           registrationSuccess(registerData);
         }
       } catch (e) {
+        setErrorInputName("all");
         fetchFailure(e.message);
       }
     }
   };
+
+  const onFocus = () => {
+    setErrorInputName("");
+  };
+
+  const renderAppInput = (item, layout) => (
+    <AppInput
+      key={typeof item === "string" ? item : item.name}
+      name={typeof item === "string" ? item : item.name}
+      type={typeof item === "string" ? item : item.type}
+      handleChange={handleChange}
+      layout={layout}
+      isLoading={isLoading}
+      withError={
+        (errorLoading &&
+          errorInputName === (typeof item === "string" ? item : item.name)) ||
+        errorInputName === "all"
+      }
+      onFocus={onFocus}
+    />
+  );
 
   return (
     <Grid
@@ -228,68 +267,27 @@ function Auth(props) {
             textColor="secondary"
             variant="fullWidth"
           >
-            <Tab
-              label="LOGIN"
-              {...a11yProps(0)}
-              className={classes["Mui-selected"]}
-              disabled={isLoading}
-            />
-            <Tab
-              label="REGISTER"
-              {...a11yProps(1)}
-              className={classes["Mui-selected"]}
-              disabled={isLoading}
-            />
+            {["LOGIN", "REGISTER"].map((name, idx) => (
+              <Tab
+                key={name}
+                label={name}
+                {...a11yProps(idx)}
+                className={classes["Mui-selected"]}
+                disabled={isLoading}
+              />
+            ))}
           </Tabs>
           <TabPanel value={value} index={0} dir={theme.direction}>
             <form noValidate onSubmit={signIn}>
-              <AppInput
-                name="email"
-                type="email"
-                handleChange={handleChange}
-                layout="login"
-                isLoading={isLoading}
-              />
-              <AppInput
-                name="password"
-                type="password"
-                handleChange={handleChange}
-                layout="login"
-                isLoading={isLoading}
-              />
+              {inputsLoginTypes.map(item => renderAppInput(item, "login"))}
               <AppButton isLoading={isLoading}>Sign in</AppButton>
             </form>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
             <form noValidate onSubmit={register}>
-              <AppInput
-                name="email"
-                type="email"
-                handleChange={handleChange}
-                layout="register"
-                isLoading={isLoading}
-              />
-              <AppInput
-                name="phone"
-                type="phone"
-                handleChange={handleChange}
-                layout="register"
-                isLoading={isLoading}
-              />
-              <AppInput
-                name="password"
-                type="password"
-                handleChange={handleChange}
-                layout="register"
-                isLoading={isLoading}
-              />
-              <AppInput
-                name="confirm password"
-                type="password"
-                handleChange={handleChange}
-                layout="register"
-                isLoading={isLoading}
-              />
+              {inputsRegisterTypes.map(item =>
+                renderAppInput(item, "register")
+              )}
               <AppButton isLoading={isLoading}>Register</AppButton>
             </form>
           </TabPanel>
